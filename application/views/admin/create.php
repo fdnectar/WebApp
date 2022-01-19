@@ -44,11 +44,11 @@
                             </div>
 
                             <div class="custom-control custom-radio float-left">
-                                <input type="radio" id="statusActive" name="status" checked="" class="custom-control-input" vlaue="1">
+                                <input type="radio" id="statusActive" name="status" checked="" class="custom-control-input" value="1">
                                 <label for="statusActive" class="custom-control-label">Active</label>
                             </div>
                             <div class="custom-control custom-radio float-left ml-3">
-                                <input type="radio" id="statusInactive" name="status" class="custom-control-input" vlaue="0">
+                                <input type="radio" id="statusInactive" name="status" class="custom-control-input" value="0">
                                 <label for="statusInactive" class="custom-control-label">Inactive</label>
                             </div>
                         </div>
