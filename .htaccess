@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+# Apache config
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+ErrorDocument 403     /cgi-sys/403_def.html
+
+ErrorDocument 404     /cgi-sys/404_def.html
+
+ErrorDocument 500     /cgi-sys/500_def.html
+
+ErrorDocument 502     /cgi-sys/502_def.html
+
+ErrorDocument 503     /cgi-sys/503_def.html
+
+ErrorDocument 504     /cgi-sys/504_def.html
