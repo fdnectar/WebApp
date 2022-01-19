@@ -25,6 +25,9 @@
                 <?php if ($this->session->flashdata('message') != "") { ?>
                     <div class="alert alert-success"><?php echo $this->session->flashdata('message'); ?></div>
                 <?php } ?>
+                <?php if ($this->session->flashdata('msg') != "") { ?>
+                    <div class="alert alert-danger"><?php echo $this->session->flashdata('msg'); ?></div>
+                <?php } ?>
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
@@ -60,12 +63,12 @@
                                             <?php if ($data['status'] == 1) { ?>
                                                 <span class="badge badge-success">Active</span>
                                             <?php } else { ?>
-                                                <span class="badge badge-success">Inactive</span>
+                                                <span class="badge badge-danger">Inactive</span>
                                             <?php } ?>
                                         </td>
                                         <td class="text-center">
-                                            <a href="" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Edit</a>
-                                            <a href="" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> Delete</a>
+                                            <a href="<?php echo base_url().'admin/category/edit/'.$data['id'];?>" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Edit</a>
+                                            <a href="javascript:void(0);" onclick="deleteCategory(<?php echo $data['id'];?>)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> Delete</a>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -86,3 +89,10 @@
 <!-- /.content -->
 </div>
 <?php $this->load->view('admin/inc/footer'); ?>
+<script type="text/javascript">
+function deleteCategory(id){
+    if(confirm("Are you sure you want to delete the category?")){
+        window.location.href='<?php echo base_url().'admin/category/delete/';?>'+id;
+    }
+}
+</script>
