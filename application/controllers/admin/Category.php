@@ -13,7 +13,7 @@ class Category extends CI_Controller
         $categories = $this->Category_model->getCategories($params);
         $data['categories'] = $categories;
         $data['search'] = $search;
-        $this->load->view('admin/list', $data);
+        $this->load->view('admin/category/list', $data);
     }
     //this method will show category create page
     public function create()
@@ -47,7 +47,7 @@ class Category extends CI_Controller
                     //we will show errors
                     $error =  $this->upload->display_errors("<p class='invalid-feedback'>", '</p>');
                     $data['errorImageUpload'] = $error;
-                    $this->load->view('admin/create', $data);
+                    $this->load->view('admin/category/create', $data);
                 }
             } else {
                 //will save category without image
@@ -59,7 +59,7 @@ class Category extends CI_Controller
                 redirect(base_url() . 'admin/category/index');
             }
         } else {
-            $this->load->view('admin/create');
+            $this->load->view('admin/category/create');
         }
     }
     //this method will show category edit page
@@ -112,7 +112,7 @@ class Category extends CI_Controller
                     $error =  $this->upload->display_errors("<p class='invalid-feedback'>", '</p>');
                     $data['errorImageUpload'] = $error;
                     $data['categories'] = $categories;
-                    $this->load->view('admin/edit', $data);
+                    $this->load->view('admin/category/edit', $data);
                 }
             } else {
                 //will save category without image
@@ -125,7 +125,7 @@ class Category extends CI_Controller
             }
         } else {
             $data['categories'] = $categories;
-            $this->load->view('admin/edit', $data);
+            $this->load->view('admin/category/edit', $data);
         }
     }
 

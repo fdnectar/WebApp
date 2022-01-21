@@ -20,8 +20,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style>
+        .fa-angle-left:before {
+            content: "\f104";
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -71,15 +78,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 Categories
                             </p>
                         </a>
+
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                <a href="<?php echo base_url() . 'admin/category/create'; ?>" class="nav-link">
+                                    <i class="far fa-circle"></i>
                                     <p>Add Categories</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="<?php echo base_url() . 'admin/category/index'; ?>" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>View Categories</p>
                                 </a>
@@ -96,13 +104,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="<?php echo base_url().'admin/article/create';?>" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Article</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="<?php echo base_url().'admin/article/index';?>" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>View Article</p>
                                 </a>
