@@ -33,7 +33,7 @@
                         <div class="card-title">
                             <form id="searchForm" name="searchForm" method="get" action="">
                                 <div class="input-group mb-0">
-                                    <input type="text" value="" class="form-control" placeholder="Search" name="q">
+                                    <input type="text" value="<?php echo $q;?>" class="form-control" placeholder="Search" name="q">
                                     <div class="input-group-append">
                                         <button class="input-group-text" id="basic-addon 1">
                                             <i class="fas fa-search"></i>
@@ -43,19 +43,56 @@
                             </form>
                         </div>
                         <div class="card-tools">
-                            <a href="<?php echo base_url().'admin/article/create';?>" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
+                            <a href="<?php echo base_url() . 'admin/article/create'; ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
                         </div>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <tr>
                                 <th width="50">#</th>
-                                <th>Name</th>
-                                <th width="100">Status</th>
-                                <th width="160" class="text-center">Action</th>
+                                <th width="100">Image</th>
+                                <th>Title</th>
+                                <th width="180">Author</th>
+                                <th width="100">Created</th>
+                                <th width="70">Status</th>
+                                <th width="140" class="text-center">Action</th>
                             </tr>
-                           
+
+                            <?php if ($articles) { ?>
+                                <?php foreach ($articles as $article) { ?>
+                                    <tr>
+                                        <td><?php echo $article['id'] ?></td>
+                                        <td>
+                                            <?php $path = './assets/images/articles/thumb_admin/' . $article['image'];
+                                            if ($article['image'] != "" && file_exists($path)) { ?>
+                                                <img class="w-100" src="<?php echo base_url('assets/images/articles/thumb_admin/' . $article['image']); ?>" alt="">
+                                            <?php } else { ?>
+                                                <img class="w-100" src="<?php echo base_url('assets/images/articles/thumb_admin/download.png'); ?>" alt="">
+                                            <?php } ?>
+                                        </td>
+                                        <td><?php echo $article['title'] ?></td>
+                                        <td><?php echo $article['author'] ?></td>
+                                        <td><?php echo date('Y-m-d', strtotime($article['created_at'])) ?></td>
+                                        <td><?php if ($article['status'] == 1) { ?>
+                                                <p class="badge badge-success">Active</p>
+                                            <?php } else { ?>
+                                                <p class="badge badge-danger">Inactive</p>
+                                            <?php } ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="<?php echo base_url() . 'admin/article/edit/' . $article['id']; ?>" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0);" onclick="deleteCategory(<?php echo $article['id']; ?>)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i></a>
+                                        </td>
+
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="4">No Record Found..</td>
+                                </tr>
+                            <?php } ?>
                         </table>
+                        <div><?php echo $pagination_links ?></div>
                     </div>
                 </div>
             </div>
@@ -68,9 +105,9 @@
 </div>
 <?php $this->load->view('admin/inc/footer'); ?>
 <script type="text/javascript">
-    function deleteCategory(id) {
-        if (confirm("Are you sure you want to delete the category?")) {
-            window.location.href = '<?php echo base_url() . 'admin/category/delete/'; ?>' + id;
+    function deleteArticle(id) {
+        if (confirm("Are you sure you want to delete the delete?")) {
+            window.location.href = '<?php echo base_url() . 'admin/article/delete/'; ?>' + id;
         }
     }
 </script>
