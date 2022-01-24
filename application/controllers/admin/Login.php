@@ -6,6 +6,11 @@ class Login extends CI_Controller
     //log functionality
     public function index()
     {
+       //echo password_hash('dnectar', PASSWORD_DEFAULT);
+        $admin = $this->session->userdata('admin');
+        if (!empty($admin)) {
+            redirect(base_url() . 'admin/home/index');
+        }
 
         $this->load->view('admin/login');
     }
@@ -37,10 +42,11 @@ class Login extends CI_Controller
             $this->load->view('admin/login');
         }
     }
-    public function logout(){
+    public function logout()
+    {
         $this->session->unset_userdata('admin');
-        redirect(base_url(). 'admin/login/index');
+        redirect(base_url() . 'admin/login/index');
     }
     //login functionality end
-    
+
 }

@@ -4,6 +4,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Category extends CI_Controller
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $admin = $this->session->userdata('admin');
+        if (empty($admin)) {
+            $this->session->set_flashdata('message', 'Please login first !');
+            redirect(base_url() . 'admin/login/index');
+        }
+    }
+
     //this method will show list category page
     public function index()
     {
@@ -12,6 +22,8 @@ class Category extends CI_Controller
         $params['search'] = $search;
         $categories = $this->Category_model->getCategories($params);
         $data['categories'] = $categories;
+        $data['mainModule'] = 'Category';
+        $data['subModule'] = 'ViewCategory';
         $data['search'] = $search;
         $this->load->view('admin/category/list', $data);
     }
@@ -19,6 +31,10 @@ class Category extends CI_Controller
     public function create()
     {
         $this->load->helper('common_helper');
+        //active and inavtive 
+        $data['mainModule'] = 'Category';
+        $data['subModule'] = 'CreateCategory';
+
         $config['upload_path']          = './assets/images/category/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['encrypt_name']        = true;
@@ -59,13 +75,17 @@ class Category extends CI_Controller
                 redirect(base_url() . 'admin/category/index');
             }
         } else {
-            $this->load->view('admin/category/create');
+            $this->load->view('admin/category/create', $data);
         }
     }
     //this method will show category edit page
     public function edit($id)
     {
         $this->load->model('Category_model');
+
+        $data['mainModule'] = 'Category';
+        $data['subModule'] = '';
+
         $categories = $this->Category_model->getCategory($id);
         if (empty($categories)) {
             $this->session->set_flashdata('msg', 'Category not found..');
@@ -85,6 +105,16 @@ class Category extends CI_Controller
                     //file uploaded successfully
                     $data = $this->upload->data();
 
+                    $path = './assets/images/category/thumb/' . $categories['image'];
+                    if ($categories['image'] != "" && file_exists($path)) {
+                        unlink($path);
+                    }
+
+                    $path = './assets/images/category/' . $categories['image'];
+                    if ($categories['image'] != "" && file_exists($path)) {
+                        unlink($path);
+                    }
+
                     //Resizing part
                     resizeImage($config['upload_path'] . $data['file_name'], $config['upload_path'] . 'thumb/' . $data['file_name'], 300, 200);
 
@@ -94,16 +124,6 @@ class Category extends CI_Controller
                     $formArray['updated_at'] = date('Y-m-d H:i:s');
 
                     $this->Category_model->update($id, $formArray);
-
-                    //unlink image part not working
-                    if (file_exists(base_url().'assets/images/category/' . $categories['image'])) {
-                        unlink(base_url().'assets/images/category/' . $categories['image']);
-                    }
-
-                    if (file_exists(base_url().'assets/images/category/thumb/' . $categories['image'])) {
-                        unlink(base_url().'assets/images/category/thumb/' . $categories['image']);
-                    }
-                    //unlink image part not working
 
                     $this->session->set_flashdata('message', 'Category updated successfully !');
                     redirect(base_url() . 'admin/category/index');
@@ -138,16 +158,17 @@ class Category extends CI_Controller
             $this->session->set_flashdata('msg', 'Category not found..');
             redirect(base_url() . 'admin/category/index');
         }
-        if (file_exists(base_url().'/assets/images/category/' . $categories['image'])) {
-            unlink(base_url().'assets/images/category/' . $categories['image']);
+        $path = './assets/images/category/thumb/' . $categories['image'];
+        if ($categories['image'] != "" && file_exists($path)) {
+            unlink($path);
         }
 
-        if (file_exists(base_url().'/assets/images/category/thumb/' . $categories['image'])) {
-            unlink(base_url().'assets/images/category/thumb/' . $categories['image']);
+        $path = './assets/images/category/' . $categories['image'];
+        if ($categories['image'] != "" && file_exists($path)) {
+            unlink($path);
         }
         $this->Category_model->delete($id);
         $this->session->set_flashdata('success', 'Category deleted successfully !');
         redirect(base_url() . 'admin/category/index');
-        
     }
 }

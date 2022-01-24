@@ -22,11 +22,17 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
+                <!-- //adding article ,essage -->
                 <?php if ($this->session->flashdata('message') != "") { ?>
                     <div class="alert alert-success"><?php echo $this->session->flashdata('message'); ?></div>
                 <?php } ?>
-                <?php if ($this->session->flashdata('msg') != "") { ?>
-                    <div class="alert alert-danger"><?php echo $this->session->flashdata('msg'); ?></div>
+                <!-- //deleting article message -->
+                <?php if ($this->session->flashdata('success') != "") { ?>
+                    <div class="alert alert-success"><?php echo $this->session->flashdata('success'); ?></div>
+                <?php } ?>
+                <!-- //article not found message -->
+                <?php if ($this->session->flashdata('error') != "") { ?>
+                    <div class="alert alert-danger"><?php echo $this->session->flashdata('error'); ?></div>
                 <?php } ?>
                 <div class="card">
                     <div class="card-header">
@@ -81,7 +87,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a href="<?php echo base_url() . 'admin/article/edit/' . $article['id']; ?>" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0);" onclick="deleteCategory(<?php echo $article['id']; ?>)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i></a>
+                                            <a href="javascript:void(0);" onclick="deleteArticle(<?php echo $article['id']; ?>)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i></a>
                                         </td>
 
                                     </tr>
@@ -106,7 +112,7 @@
 <?php $this->load->view('admin/inc/footer'); ?>
 <script type="text/javascript">
     function deleteArticle(id) {
-        if (confirm("Are you sure you want to delete the delete?")) {
+        if (confirm("Are you sure you want to delete the article?")) {
             window.location.href = '<?php echo base_url() . 'admin/article/delete/'; ?>' + id;
         }
     }

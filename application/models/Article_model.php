@@ -3,8 +3,13 @@
 class Article_model extends CI_Model
 {
 
-    public function getArticle()
+    public function getArticle($id)
     {
+        //will get articls with on behalf of id
+        $this->db->where('id', $id);
+        $query = $this->db->get('articles');
+        $article = $query->row_array();
+        return $article;
     }
 
     public function getArticles($param = array())
@@ -44,5 +49,17 @@ class Article_model extends CI_Model
         //this function will add article in db
         $this->db->insert('articles', $formArray);
         return $this->db->insert_id();
+    }
+
+     public function updateArticle($id, $formArray)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('articles', $formArray);
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('articles');
     }
 }

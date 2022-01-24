@@ -64,30 +64,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?php echo base_url() . 'admin/home/index'; ?>" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Dashboard
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview <?php echo (!empty($mainModule) && $mainModule == 'Category') ? 'menu-open' : '' ?>">
                         <a href="#" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Categories
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
 
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?php echo base_url() . 'admin/category/create'; ?>" class="nav-link">
+                                <a href="<?php echo base_url() . 'admin/category/create'; ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == 'Category' && !empty($subModule) && $subModule == 'CreateCategory') ? 'active' : '' ?>">
                                     <i class="far fa-circle"></i>
                                     <p>Add Categories</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo base_url() . 'admin/category/index'; ?>" class="nav-link">
+                                <a href="<?php echo base_url() . 'admin/category/index'; ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == 'Category' && !empty($subModule) && $subModule == 'ViewCategory') ? 'active' : '' ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>View Categories</p>
                                 </a>
@@ -95,22 +96,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview <?php echo (!empty($mainModule) && $mainModule == 'Article') ? 'menu-open' : '' ?>">
                         <a href="#" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Articles
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?php echo base_url().'admin/article/create';?>" class="nav-link">
+                                <a href="<?php echo base_url() . 'admin/article/create'; ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == 'Article' && !empty($subModule) && $subModule == 'CreateArticle') ? 'active' : '' ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Article</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo base_url().'admin/article/index';?>" class="nav-link">
+                                <a href="<?php echo base_url() . 'admin/article/index'; ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == 'Article' && !empty($subModule) && $subModule == 'ViewArticle') ? 'active' : '' ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>View Article</p>
                                 </a>
