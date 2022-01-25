@@ -1,0 +1,189 @@
+.btn-get-started{
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 30px;
+  color: #fff;
+  background: #e03a3c;
+  border: 2px solid #e03a3c;
+}
+.btn-get-started:hover {
+  background: transparent;
+  border-color: #fff;
+}
+#head .head-img {
+  text-align: center;
+}
+#head .head-img img {
+  width: 70%;
+}
+#serv {
+  width: 100%;
+  height: 80vh;
+  background: #f9f9f9;
+}
+#serv .container {
+  padding-top: 84px;
+}
+#serv h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #0f394c;
+  text-transform: uppercase;
+}
+#serv h2 {
+  color: #1c698c;
+  margin: 10px 0 0 0;
+  font-size: 20px;
+}
+#serv .btn-get-started {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 25px;
+  color: #fff;
+  background: #49b5e7;
+  text-transform: uppercase;
+}
+#serv .btn-get-started:hover {
+  background: #76c7ed;
+}
+@media (max-width: 991px) {
+  #serv {
+    height: 100vh;
+    text-align: center;
+  }
+  #serv .serv-img img {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  #serv h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #serv h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  #serv .serv-img img {
+    width: 80%;
+  }
+}
+.ser .icc {
+  text-align: center;
+  padding: 70px 20px 80px 20px;
+  transition: all ease-in-out 0.3s;
+  background: #fff;
+}
+.ser .icc .icon {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 0.3s;
+  position: relative;
+}
+.ser .icc .icon i {
+  font-size: 36px;
+  transition: 0.5s;
+  position: relative;
+}
+.ser .icc .icon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ser .icc .icon svg path {
+  transition: 0.5s;
+  fill: #f5f5f5;
+}
+.ser .icc h4 {
+  font-weight: 600;
+  margin: 10px 0 15px 0;
+  font-size: 22px;
+}
+.ser .icc h4 a {
+  color: #111;
+  transition: ease-in-out 0.3s;
+}
+.ser .icc p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.ser .icc:hover {
+  border-color: #fff;
+  box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
+}
+.ser .iconbox-blue i {
+  color: #47aeff;
+}
+.ser .iconbox-blue:hover .icon i {
+  color: #fff;
+}
+.ser .iconbox-blue:hover .icon path {
+  fill: #47aeff;
+}
+.ser .iconbox-orange i {
+  color: #ffa76e;
+}
+.ser .iconbox-orange:hover .icon i {
+  color: #fff;
+}
+.ser .iconbox-orange:hover .icon path {
+  fill: #ffa76e;
+}
+.ser .iconbox-pink i {
+  color: #e80368;
+}
+.ser .iconbox-pink:hover .icon i {
+  color: #fff;
+}
+.ser .iconbox-pink:hover .icon path {
+  fill: #e80368;
+}
+.ser .iconbox-yellow i {
+  color: #ffbb2c;
+}
+.ser .iconbox-yellow:hover .icon i {
+  color: #fff;
+}
+.ser .iconbox-yellow:hover .icon path {
+  fill: #ffbb2c;
+}
+.ser .iconbox-red i {
+  color: #ff5828;
+}
+.ser .iconbox-red:hover .icon i {
+  color: #fff;
+}
+.ser .iconbox-red:hover .icon path {
+  fill: #ff5828;
+}
+.ser .iconbox-teal i {
+  color: #11dbcf;
+}
+.ser .iconbox-teal:hover .icon i {
+  color: #fff;
+}
+.ser .iconbox-teal:hover .icon path {
+  fill: #11dbcf;
+}
+.nav-link{
+  text-transform: uppercase;
+}
