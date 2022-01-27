@@ -62,4 +62,22 @@ class Article_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete('articles');
     }
+
+    // Front-end Databse Manipulation
+
+    public function getArticlesFront($param = array())
+    {
+        if (isset($param['offset']) && isset($param['limit'])) {
+            $this->db->limit($param['offset'], $param['limit']);
+        }
+
+        if (isset($param['q'])) {
+            $this->db->or_like('title', trim($param['q']));
+            $this->db->or_like('author', trim($param['q']));
+        }
+        $this->db->order_by('created_at', 'DESC');
+        $query = $this->db->get('articles');
+        $articles = $query->result_array();
+        return $articles;
+    }
 }

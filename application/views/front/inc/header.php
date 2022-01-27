@@ -25,8 +25,8 @@
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/style1.css" rel="stylesheet">
     <style>
-        #hero{
-            background-image: url("<?php echo base_url('assets/images/mark.jpg');?>");
+        #hero {
+            background-image: url("<?php echo base_url('assets/images/marketing.jpg'); ?>");
         }
     </style>
 
@@ -39,9 +39,9 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0 ms-auto">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="<?php echo base_url('welcome/about'); ?>">About</a></li>
-                    <li><a class="nav-link scrollto" href="<?php echo base_url('welcome/service'); ?>">Services</a></li>
+                    <li><a class="nav-link scrollto active" href="<?php echo base_url('home/index');?>">Home</a></li>
+                    <li><a class="nav-link scrollto" href="<?php echo base_url('page/about'); ?>">About</a></li>
+                    <li><a class="nav-link scrollto" href="<?php echo base_url('page/service'); ?>">Services</a></li>
                     <li><a class="nav-link scrollto" href="<?php echo base_url('welcome/service'); ?>">Blog</a></li>
                     <li><a class="nav-link scrollto" href="#">Categories</a></li>
                     <li><a class="nav-link scrollto" href="#">Contact</a></li>

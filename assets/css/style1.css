@@ -187,3 +187,19 @@
 .nav-link{
   text-transform: uppercase;
 }
+.blog-image{
+  width: 250px;
+}
+#about-image{
+  margin-top: 90px;
+}
+.services .icon-box{
+  background: #fff;
+}
+.services .icon-box:hover{
+  background: #fff;
+}
+.ser{
+  margin-bottom: 20px;
+}
+
